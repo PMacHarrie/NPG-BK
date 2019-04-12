@@ -1,0 +1,7 @@
+ps -ef | grep getIMS.py | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep getNISE.py | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep getOMB.py | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep getCMC.py | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep getRAP.py | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep getReynolds.py | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep getGFS.py | grep -v grep | awk '{print "kill " $2}' | bash

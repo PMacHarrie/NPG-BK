@@ -1,0 +1,4 @@
+python ii_pda_pollerMain.py &
+./amy_poller.bsh 10
+./go_getter.bsh 25
+exit

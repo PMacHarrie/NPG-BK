@@ -1,0 +1,3 @@
+ps -ef | grep ii_pda_getter | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep ii_pda_pollerWorker | grep -v grep | awk '{print "kill " $2}' | bash
+ps -ef | grep ii_pda_pollerMain | grep -v grep | awk '{print "kill " $2}' | bash

@@ -1,0 +1,5 @@
+for ((n=0; n<$1; n++))
+    do
+        echo "start ii_pda_getter $n"; python ii_pda_getter.py &
+	sleep 2s
+    done

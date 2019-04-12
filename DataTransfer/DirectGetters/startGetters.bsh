@@ -1,0 +1,7 @@
+python getIMS/getIMS.py &
+python getNISE/getNISE.p &
+python getOMB/getOMB.py &
+python getCMC/getCMC.p &
+python getRAP/getRAP.py &
+python getReynolds/getReynolds.py &
+python getGFS/getGFS.py &
