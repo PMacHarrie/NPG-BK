@@ -1,0 +1,7 @@
+#!/bin/bash
+cd $im/pgs/forensics_data
+for filename in $(find $im/pgs/forensics_data -cmin +15 -type f); do
+	x=`basename $filename`
+	aws s3 cp $filename s3://ndepg/forensics_data/$x
+	rm -f $filename
+done
