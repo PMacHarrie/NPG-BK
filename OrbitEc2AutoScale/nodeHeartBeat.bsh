@@ -1,0 +1,11 @@
+#!/bin/bash
+export PGPASSWORD=nde
+while true
+do
+rN=$(python /home/ec2-user/orbautoscale/instanceInfo.py 2>&1)
+echo `date` heartBeat $rN
+psql --host=nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com --username=nde_dev1 -q << eof
+insert into npg_metric values (now(), '$rN');
+eof
+sleep 50
+done

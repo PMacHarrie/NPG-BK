@@ -1,0 +1,87 @@
+#!/bin/bash
+
+echo "Starting. Sleeping for 5 seconds."
+sleep 5
+
+
+echo "Starting node heartbeat."
+/home/ec2-user/orbautoscale/nodeHeartBeat.bsh &
+
+echo "Starting yum update."
+sudo yum -y update
+
+echo "Shell has been running for $SECONDS seconds"
+
+echo "Starting /mnt/working filesystem resize."
+df -m | grep working | sudo resize2fs $(awk '{print $1}') 
+
+echo "Shell has been running for $SECONDS seconds"
+
+echo "Sleeping for 10 seconds."
+sleep 10
+
+echo "Booting NDE node."
+
+arr=()
+
+cd $dm/pgs/node
+while [[ $# -gt 0 ]]
+do
+key="$1"
+case $key in
+	-Small)
+	jb="$2"
+	shift
+	shift
+	nohup python $dm/pgs/node/pnm.py $dm/pgs/node/productionNodeMgr_Small.conf $jb &
+	arr=("$!" "${arr[@]}")
+	echo `Date` Launched Small $jb, pid=$!
+	;;
+	-Regular)
+	jb="$2"
+	shift
+	shift
+	nohup python $dm/pgs/node/pnm.py $dm/pgs/node/productionNodeMgr_Regular.conf $jb &
+	arr=("$!" "${arr[@]}")
+	echo `Date` Launched Small $jb, pid=$!
+	;;
+	*)
+	echo 'Unknown=',$key
+	shift
+	;;
+esac
+done
+
+echo "Shell has been running for $SECONDS seconds"
+echo "nodeBoot.bsh sleeping for 3000 seconds, will kill nodeMgrs ${arr[*]} when awakened."
+
+sleep 3120
+
+echo "Shell has been running for $SECONDS seconds"
+
+for i in "${arr[@]}"
+do
+  kill "$i"
+  echo Killed $i
+done
+
+echo "sleeping for 200 seconds to allow jobs to complete and potential forensics files to be created"
+sleep 200
+
+# Copy forensics files s3
+
+/opt/apps/nde/NDE_DEV1/common/cpForensics2S3.bsh &
+
+rN=$(python /home/ec2-user/orbautoscale/instanceName.py 2>&1)
+
+#echo rN=$rN
+for i in "${arr[@]}"
+do
+	#echo rN=$rN 
+	#echo aws s3 cp $dm/pgs/node/nodeMgr$i.log  s3://nde-dev2/node_logs/$rN_$i.log
+	aws s3 cp $dm/pgs/node/nodeMgr$i.log  s3://nde-dev2/node_logs/${rN}_nodeMgr$i.log
+done
+
+echo "Shell ran for $SECONDS seconds"
+
+aws s3 cp ~/boot.log  s3://nde-dev2/node_logs/${rN}_boot.log
