@@ -1,0 +1,98 @@
+{
+    "jwtAuth": {
+        "lambda": {
+            "resource": "/auth/{proxy+}",
+            "path": "/auth/user",
+            "httpMethod": "GET",
+            "headers": {
+                "accept": "application/json, text/plain, */*",
+                "accept-encoding": "gzip, deflate, br",
+                "accept-language": "en-US,en;q=0.9",
+                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDYwMTQ5NjIsImlhdCI6MTU0NjAxNDY2Miwic3ViIjoibmRlZGVtbyJ9.oI8t-jlev48BQkb2mxMYlK_3tl5bZ9Cr8NpDxpfK6cc",
+                "Host": "wnsummvwyl.execute-api.us-east-1.amazonaws.com",
+                "origin": "http://localhost:3000",
+                "referer": "http://localhost:3000/signin",
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36",
+                "X-Amzn-Trace-Id": "Root=1-5c264fc6-5ca5a19049a73bea9cb004b5",
+                "X-Forwarded-For": "35.172.21.180",
+                "X-Forwarded-Port": "443",
+                "X-Forwarded-Proto": "https"
+            },
+            "multiValueHeaders": {
+                "accept": [
+                    "application/json, text/plain, */*"
+                ],
+                "accept-encoding": [
+                    "gzip, deflate, br"
+                ],
+                "accept-language": [
+                    "en-US,en;q=0.9"
+                ],
+                "Authorization": [
+                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDYwMTQ5NjIsImlhdCI6MTU0NjAxNDY2Miwic3ViIjoibmRlZGVtbyJ9.oI8t-jlev48BQkb2mxMYlK_3tl5bZ9Cr8NpDxpfK6cc"
+                ],
+                "Host": [
+                    "wnsummvwyl.execute-api.us-east-1.amazonaws.com"
+                ],
+                "origin": [
+                    "http://localhost:3000"
+                ],
+                "referer": [
+                    "http://localhost:3000/signin"
+                ],
+                "User-Agent": [
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+                ],
+                "X-Amzn-Trace-Id": [
+                    "Root=1-5c264fc6-5ca5a19049a73bea9cb004b5"
+                ],
+                "X-Forwarded-For": [
+                    "35.172.21.180"
+                ],
+                "X-Forwarded-Port": [
+                    "443"
+                ],
+                "X-Forwarded-Proto": [
+                    "https"
+                ]
+            },
+            "queryStringParameters": null,
+            "multiValueQueryStringParameters": null,
+            "pathParameters": {
+                "proxy": "user"
+            },
+            "stageVariables": null,
+            "requestContext": {
+                "resourceId": "i722os",
+                "resourcePath": "/auth/{proxy+}",
+                "httpMethod": "GET",
+                "extendedRequestId": "SoFm9EoBIAMFmgg=",
+                "requestTime": "28/Dec/2018:16:31:02 +0000",
+                "path": "/nde-gui/auth/user",
+                "accountId": "784330347242",
+                "protocol": "HTTP/1.1",
+                "stage": "nde-gui",
+                "domainPrefix": "wnsummvwyl",
+                "requestTimeEpoch": 1546014662142,
+                "requestId": "f70cabb9-0abd-11e9-af89-8176b627c2a1",
+                "identity": {
+                    "cognitoIdentityPoolId": null,
+                    "accountId": null,
+                    "cognitoIdentityId": null,
+                    "caller": null,
+                    "sourceIp": "35.172.21.180",
+                    "accessKey": null,
+                    "cognitoAuthenticationType": null,
+                    "cognitoAuthenticationProvider": null,
+                    "userArn": null,
+                    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36",
+                    "user": null
+                },
+                "domainName": "wnsummvwyl.execute-api.us-east-1.amazonaws.com",
+                "apiId": "wnsummvwyl"
+            },
+            "body": null,
+            "isBase64Encoded": false
+        }
+    }
+}
