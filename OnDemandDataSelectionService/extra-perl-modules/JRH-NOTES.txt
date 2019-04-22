@@ -1,0 +1,20 @@
+In order to Install the Perl JSON module, I executed the following:
+(from inside the un-tarred module source directory)
+perl -w Makefile.PL
+make
+sudo make install
+
+
+The "sudo make install" command produced the following output:
+Installing /opt/apps/ots/perl5_64/lib/site_perl/5.12.2/JSON.pm
+Installing /opt/apps/ots/perl5_64/lib/site_perl/5.12.2/JSON/backportPP.pm
+Installing /opt/apps/ots/perl5_64/lib/site_perl/5.12.2/JSON/backportPP/Boolean.pm
+Installing /opt/apps/ots/perl5_64/lib/site_perl/5.12.2/JSON/backportPP/Compat5006.pm
+Installing /opt/apps/ots/perl5_64/lib/site_perl/5.12.2/JSON/backportPP/Compat5005.pm
+Installing /opt/apps/ots/perl5_64/man/man3/JSON::backportPP::Compat5006.3
+Installing /opt/apps/ots/perl5_64/man/man3/JSON::backportPP::Boolean.3
+Installing /opt/apps/ots/perl5_64/man/man3/JSON::backportPP.3
+Installing /opt/apps/ots/perl5_64/man/man3/JSON::backportPP::Compat5005.3
+Installing /opt/apps/ots/perl5_64/man/man3/JSON.3
+Appending installation info to /opt/apps/ots/perl5_64/lib/5.12.2/x86_64-linux-thread-multi/perllocal.pod
+
