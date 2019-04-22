@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS SAM template for factory EPG
+#Author: Hieu Phung; SOLERS INC (hieu.phung@solers.com)
+
+Mappings:
+  EnvironmentVariablesMap:
+    # Note: the actual variable names have '_' instead of '-'
+    # However, '_' is not permitted in a mapping name
+    RD-DBNM: 
+      Value: 'nde_dev1'
+    RD-HOST:
+      Value: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+    RD-PSWD: 
+      Value: 'nde'
+    RD-USER:
+      Value: 'nde_dev1'
+
+Globals:
+  Function:
+    VpcConfig:
+      SecurityGroupIds:
+        - sg-1e601b69
+      SubnetIds:
+        - subnet-49c98914
+        - subnet-faafe3d5
+        - subnet-d0054bef
+        - subnet-6f3d2924
+        - subnet-865f6ce2
+        - subnet-ef78b7e0
+
+Resources:
+  processTrigger:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/processTrigger.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/readS3Role'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          RD_DBNM: !FindInMap [EnvironmentVariablesMap, RD-DBNM, Value]
+          RD_HOST: !FindInMap [EnvironmentVariablesMap, RD-HOST, Value]
+          RD_PSWD: !FindInMap [EnvironmentVariablesMap, RD-PSWD, Value]
+          RD_USER: !FindInMap [EnvironmentVariablesMap, RD-USER, Value]
+  completeJobSpec:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/completeJobSpec.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 60
+      Role: 'arn:aws:iam::784330347242:role/service-role/readS3Role'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          RD_DBNM: !FindInMap [EnvironmentVariablesMap, RD-DBNM, Value]
+          RD_HOST: !FindInMap [EnvironmentVariablesMap, RD-HOST, Value]
+          RD_PSWD: !FindInMap [EnvironmentVariablesMap, RD-PSWD, Value]
+          RD_USER: !FindInMap [EnvironmentVariablesMap, RD-USER, Value]

@@ -1,0 +1,66 @@
+{
+    "getFileArray": {
+        "lambda": {
+            "pathParameters": {
+                "arrayname": "BrightnessTemperature",
+                "fileid": 34859597
+            }
+        }
+    },
+    "getFile": {
+        "lambda": {
+            "pathParameters": {
+                "id": 40646419
+            }
+        }
+    },
+    "getFileMetadata": {
+        "lambda": {
+            "pathParameters": {
+                "fileid": 97101076
+            }
+        }
+    },
+    "ingestFile": {
+        "lambda": {
+            "resource": "hi",
+            "body": {
+                "filestoragereference": {
+                    "bucket": "ndepg",
+                    "key": "incoming_input/RNSCA-ROLPS_npp_d20190218_t2044213_e2044587_b37887_c20190218214546891682_niiu_int.h5"
+                },
+                "filename": "RNSCA-ROLPS_npp_d20190218_t2044213_e2044587_b37887_c20190218214546891682_niiu_int.h5"
+            }
+        }
+    },
+    "getAlgorithm": {
+        "lambda": {
+            "pathParameters": {
+                "algoid": 9
+            }
+        }
+    },
+    "searchFile": {
+        "lambda": {
+            "resource": "hi",
+            "body": {
+                "query": {
+                    "edmCore": {
+                        "productShortNames": "VIIRS-M12-SDR"
+                    }
+                }
+            }
+        }
+    },
+    "ingestFilev2": {
+        "lambda": {
+            "body": {
+                "filestoragereference": {
+                    "bucket": "ndepg",
+                    "key": "incoming_input/AVAFO_j01_d20181213_t2340311_e2341556_b05542_c20181214001846469785_niic_int.h5"
+                },
+                "filename": "AVAFO_j01_d20181213_t2340311_e2341556_b05542_c20181214001846469785_niic_int.h5"
+            }
+        }
+    }
+}

@@ -1,0 +1,107 @@
+{
+    "registerProduct": {
+        "lambda": {
+            "resource": "/product",
+            "path": "/product",
+            "httpMethod": "PUT",
+            "headers": null,
+            "queryStringParameters": null,
+            "pathParameters": {
+                "id": "348"
+            },
+            "stageVariables": null,
+            "requestContext": {
+                "path": "/product",
+                "accountId": "784330347242",
+                "resourceId": "f0h30q",
+                "stage": "test-invoke-stage",
+                "requestId": "4d6f655e-8603-11e8-bd15-3784bb947740",
+                "identity": {
+                    "cognitoIdentityPoolId": null,
+                    "cognitoIdentityId": null,
+                    "apiKey": "test-invoke-api-key",
+                    "cognitoAuthenticationType": null,
+                    "userArn": "arn:aws:iam::784330347242:user/dmoore",
+                    "apiKeyId": "test-invoke-api-key-id",
+                    "userAgent": "aws-cli/1.14.9 Python/2.7.14 Linux/4.14.47-56.37.amzn1.x86_64 botocore/1.8.13",
+                    "accountId": "784330347242",
+                    "caller": "AIDAINEQK3DH7Q5N36FEK",
+                    "sourceIp": "test-invoke-source-ip",
+                    "accessKey": "ASIAITZ6SZQH2HT5TXIQ",
+                    "cognitoAuthenticationProvider": null,
+                    "user": "AIDAINEQK3DH7Q5N36FEK"
+                },
+                "resourcePath": "/product",
+                "httpMethod": "PUT",
+                "extendedRequestId": "J7YZgFmzIAMFjZQ=",
+                "apiId": "yr4kbtavbh"
+            },
+            "body": {
+                "INGESTDIRECTORYNAME": "incoming_input",
+                "PRODUCT_TIME_COVERAGE": "32",
+                "PRODUCTFILENAMEPATTERN": "ATMS_v_r__npp_s________________e________________c_______________.bufr",
+                "PRODUCTVERTICALRESOLUTION": "",
+                "PRODUCTLONGNAME": "ATMS_BUFR LongName",
+                "PRODUCTARCHIVE": "",
+                "IngestProcessSteps": [
+                    {
+                        "IPSDORETRANSMIT": "0",
+                        "IPSOPTIONALPARAMETERS": "",
+                        "IPSFAILSINGEST": "1",
+                        "IPSENABLE": "1",
+                        "NSFDESCRIPTION": "Standard NDE Extractor"
+                    }
+                ],
+                "PRODUCTOBSTIMEPATTERN": "(.*)_s(\\d{8})(\\d{7})_e.*\\.comp",
+                "PRODUCTIDPSMNEMONIC": "",
+                "PRODUCTMETADATALINK": "",
+                "PRODUCTCOVERAGEGAPINTERVAL_DS": "",
+                "PRODUCTCIPPRIORITY": "",
+                "PRODUCTFILENAMEMETAEXTENSION": "null",
+                "PRODUCTHORIZONTALRESOLUTION": "",
+                "PRODUCTSUBTYPE": "NUP",
+                "PRODUCTGROUPNAME": "null",
+                "PRODUCT_MAP_PROJECTION": "",
+                "PRODUCTIDPSRETRANSMITLIMIT": "0",
+                "PRODUCTTYPE": "NDE",
+                "PRODUCTRETENTIONPERIODHR": "120",
+                "PRODUCTPROFILELINK": "",
+                "PRODUCTDESCRIPTION": "ATMS_BUFR is the SDR and TDR output converted to BUFR",
+                "PRODUCTHOMEDIRECTORY": "products/ATMS_BUFR",
+                "PRODUCTAVAILABILITYDATE": "",
+                "PRODUCTSHORTNAME": "ATMS_BUFR2",
+                "PRODUCTSTATUS": "",
+                "PRODUCTFILEMETADATAEXTERNAL": "0",
+                "PRODUCTFILENAMEPREFIX": "",
+                "PRODUCTFILENAMEEXTENSION": "bufr",
+                "PRODUCTIRMESSAGEEXTENSION": ".comp$",
+                "PRODUCTAREA": "",
+                "Platforms": [
+                    {
+                        "Platformname": "SNPP"
+                    }
+                ],
+                "PRODUCTSPATIALAREA": "",
+                "PRODUCTFILEFORMAT": "bufr",
+                "PRODUCTESTAVGFILESIZE": "0.12"
+            }
+        }
+    },
+    "searchProduct": {
+        "lambda": {
+            "queryStringParameters": {
+                "filenamePattern": "SCRIS_j01_d20180927_t1523519_e1524217_b04445_c20180927154617253761_niic_int.h5"
+            }
+        }
+    },
+    "getProductList": {
+        "lambda": {}
+    },
+    "getProduct": {
+        "lambda": {
+            "pathParameters": {
+                "productid": "11"
+            }
+        }
+    }
+}

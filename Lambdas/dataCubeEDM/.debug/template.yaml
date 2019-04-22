@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS SAM template for data cube EDM
+#Author: Hieu Phung @SOLERS INC (hieu.phung@solers.com)
+Globals:
+  Function:
+    VpcConfig:
+      SecurityGroupIds:
+        - sg-1e601b69
+      SubnetIds:
+        - subnet-49c98914
+        - subnet-faafe3d5
+        - subnet-d0054bef
+        - subnet-6f3d2924
+    # Environment:
+    #   Variables:
+    #     ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+    #     ES_PORT: '443'
+    #     RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+    #     RD_DBNM: 'nde_dev2'
+    #     RD_USER: 'nde_dev2'
+    #     RD_PSWD: 'nde'
+    #     RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+    #     RD_DBNM: 'nde_dev1'
+    #     RD_USER: 'nde_dev1'
+    #     RD_PSWD: 'nde'
+Resources:
+  getDataCubeMetadata:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/getDataCubeMetadata.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  getDataCubeList:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/getDataCubeList.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  getDataCubeSelect:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/getDataCubeSelect.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+          NDEMODE: 'NDE_DEV1'
+          CR8_JOB: 'arn:aws:lambda:us-east-1:784330347242:function:cloud9-jobEPG-createJob-18UXCSGK21GIK'

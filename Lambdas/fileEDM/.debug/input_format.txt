@@ -1,0 +1,40 @@
+{
+	"query": {
+		"edmCore": {
+			"productShortNames": ["VIIRS-M12-SDR", "shortName2"],
+			"fileIds": ["fileId1", "fileId2"],
+			"fileNames": ["fileName1", "fileName2"],
+			"timeRange": {
+				"startTime": "20180926T223727.900Z",
+				"endTime": "20180926T223757.700Z"
+			},
+			"spatialArea": {
+				"topLeft": [-87.3809661865234, 48.8152542114258],
+				"bottomRight": [-72.6752777099609, 34.4298515319824]
+			},
+			"orbitRange": {
+				"fileBeginOrbitNum": 4888,
+				"fileEndOrbitNum": 4891
+			},
+			"fileDayNightFlag": 0,
+			"fileAscDescIndicator": 1
+		},
+		"objectGroupAttrs": {
+			"groupAttrName1": "groupAttrValue1",
+			"groupAttrName2": "groupAttrValue1"
+		}
+	},
+	"result": {
+		"format": "full | edmCore | attrList",
+		"attrList*": ["attr1 ", "attr2", "attr3"],
+		"temporalSum": true | false,
+		"sort": [
+            {"attr1": "asc"}, 
+            {"attr2": "desc"}
+		],
+		"limit": {
+            "from": 0
+            "size": 100
+        }
+	}
+}

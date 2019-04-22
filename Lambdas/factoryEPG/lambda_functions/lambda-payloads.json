@@ -1,0 +1,71 @@
+{
+    "processTrigger": {
+        "lambda": {
+            "Records": [
+                {
+                    "Type": "Notification",
+                    "MessageId": "29674643-fb73-54a8-af0a-12f136cd242e",
+                    "TopicArn": "arn:aws:sns:us-east-1:784330347242:ValidatedProduct",
+                    "Subject": "Validated File",
+                    "Message": "VIIRS_I3_IMG_EDR_npp_s201901081933003_e201901081934488_c201901111659370.nc",
+                    "Timestamp": "2019-01-11T16:59:42.390Z",
+                    "SignatureVersion": "1",
+                    "Signature": "jN6tiw7EMXAc8u+9+CaTig2bpOqOpVeSiADpaRjflNstwTtJXcaeaim+sywrQ/5VZlmULvAMzMJFjYOZp9ybyYiYGWV8lrANFaHmdWE4YV542IFeYve/gg0egtruWJZU2gJb6EP6plWpXLjWNu46oxkeIbMqlhyNQO+L6GZYaElIHSCtuNmaFK1dneORtEwSr2WrLhUdd/gXPVunBGRgUffRmqda+WYF5Iu4VWNWBojwgu0zbj1qqw/S7HFGOcr8MPv5ghCRi7VGmYBJiC1q+FIexiGlP4NMVmc5+7JORvzLvMWjFFvVjiaWA4AxDX53dpVvFFWA2iUG2fSUa5pZuw==",
+                    "SigningCertURL": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-ac565b8b1a6c5d002d285f9598aa1d9b.pem",
+                    "UnsubscribeURL": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:784330347242:ValidatedProduct:a3f3bae7-4595-4431-96f2-e59aa9b51052",
+                    "MessageAttributes": {
+                        "fileSpatialArea": {
+                            "Type": "String",
+                            "Value": "SRID=4326;MULTIPOLYGON(((76.92147064 35.74948502, 77.00898743 38.33464432, 77.23886108 40.79192734, 95.12882996 39.37352371, 111.77672577 35.48817062, 110.53678131 33.19059753, 109.3290863 30.75919342, 93.58432007 34.40348053, 76.92147064 35.74948502)))"
+                        },
+                        "fileName": {
+                            "Type": "String",
+                            "Value": "VIIRS_I3_IMG_EDR_npp_s201901081933003_e201901081934488_c201901111659370.nc"
+                        },
+                        "productId": {
+                            "Type": "String",
+                            "Value": "4033"
+                        },
+                        "fileDayNightFlag": {
+                            "Type": "String",
+                            "Value": "Night"
+                        },
+                        "productHomeDirectory": {
+                            "Type": "String",
+                            "Value": "products/VIIRS_I3_IMG_EDR"
+                        },
+                        "triggerFlag": {
+                            "Type": "String",
+                            "Value": "true"
+                        },
+                        "productShortname": {
+                            "Type": "String",
+                            "Value": "VIIRS_I3_IMG_EDR"
+                        },
+                        "fileEndTime": {
+                            "Type": "String",
+                            "Value": "2019-01-08T19:34:48.000Z"
+                        },
+                        "fileStartTime": {
+                            "Type": "String",
+                            "Value": "2019-01-08T19:33:00.000Z"
+                        },
+                        "fileId": {
+                            "Type": "String",
+                            "Value": "71384616"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "completeJobSpec": {
+        "lambda": {
+            "Records": [
+                {
+                    "body": "{\"prodPartialJobId\": \"13306659\" }"
+                }
+            ]
+        }
+    }
+}

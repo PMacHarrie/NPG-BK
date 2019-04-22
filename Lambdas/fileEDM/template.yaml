@@ -1,0 +1,149 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS SAM template for file EDM
+#Author: Hieu Phung @SOLERS INC (hieu.phung@solers.com)
+Globals:
+  Function:
+    VpcConfig:
+      SecurityGroupIds:
+        - sg-1e601b69
+      SubnetIds:
+        - subnet-49c98914
+        - subnet-faafe3d5
+        - subnet-d0054bef
+        - subnet-6f3d2924
+Resources:
+  getFile:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/getFile.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/readS3Role'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  getFileList:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: getFileList/getFileList_LF.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  getFileMetadata:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/getFileMetadata.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  getFileArray:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/getFileArray.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/readS3Role'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  searchFile:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/searchFile.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  ingestFile:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/ingestFile.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 768
+      Timeout: 120
+      Role: 'arn:aws:iam::784330347242:role/service-role/readS3Role'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          # RD_HOST: 'ndedev2.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          # RD_DBNM: 'nde_dev2'
+          # RD_USER: 'nde_dev2'
+          # RD_PSWD: 'nde'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+          SQS_BIG: 'https://sqs.us-east-1.amazonaws.com/784330347242/BigIngestQ'
+          incomingdir: '/tmp'

@@ -1,0 +1,32 @@
+{
+    "query": {
+        "algorithm": {
+            "name": "dss ad-hoc",
+            "version": "1.0"
+        },
+        "jobStatus": ["QUEUED","FAILED"],
+        "enqueueTime": {
+            "gte": "20180926T223727.900Z",
+            "lte": "20180926T223727.900Z"
+        },
+        "startTime": {
+            "gte": "20180926T223727.900Z",
+            "lte": "20180926T223727.900Z"
+        },
+        "completionTime": {
+            "gte": "20180926T223727.900Z",
+            "lte": "20180926T223727.900Z"
+        }
+    },
+    "result": {
+		"returnJobSpec": true | false,
+		"sort": [
+            {"attr1": "asc"}, 
+            {"attr2": "desc"}
+		],
+		"limit": {
+            "from": 0
+            "size": 100
+        }
+	}
+}

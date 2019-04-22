@@ -1,0 +1,130 @@
+{
+    "getJobsSummary": {
+        "lambda": {
+            "queryStringParameters": {
+                "lastHoursInterval": 96
+            }
+        }
+    },
+    "getJobDetails": {
+        "lambda": {
+            "pathParameters": {
+                "jobid": 305
+            }
+        }
+    },
+    "updateJob": {
+        "lambda": {
+            "resource": "",
+            "pathParameters": {
+                "jobid": 305
+            },
+            "body": {
+                "newJobStatus": "COMPLETE"
+            }
+        }
+    },
+    "createJob": {
+        "lambda": {
+            "resource": "hi",
+            "body": {
+                "jobType": "onDemand",
+                "algorithm": {
+                    "name": "dss ad-hoc",
+                    "version": "1.0"
+                },
+                "prDataSelectionJSON": {
+                    "measures": [
+                        {
+                            "name": "Radiance@VIIRS-I4-IMG-EDR",
+                            "from": "AlongTrack-1541@CrossTrack-8241"
+                        },
+                        {
+                            "name": "Latitude@VIIRS-IMG-GEO-TC",
+                            "from": "AlongTrack-1541@CrossTrack-8241"
+                        },
+                        {
+                            "name": "Longitude@VIIRS-IMG-GEO-TC",
+                            "from": "AlongTrack-1541@CrossTrack-8241"
+                        }
+                    ]
+                },
+                "inputs": [
+                    {
+                        "prisFileHandle": "input1",
+                        "prisFileHandleNumbering": "N",
+                        "productShortName": "VIIRS-I4-IMG-EDR",
+                        "fileIds": [
+                            35716798,
+                            35714784,
+                            35716136
+                        ]
+                    },
+                    {
+                        "prisFileHandle": "input1",
+                        "prisFileHandleNumbering": "N",
+                        "productShortName": "VIIRS-IMG-GTM-EDR-GEO",
+                        "fileIds": [
+                            35886991,
+                            35887068,
+                            35887414
+                        ]
+                    }
+                ],
+                "outputs": {
+                    "fileNamePrefix": "myProduct"
+                },
+                "parameters": {
+                    "GeogCitationGeoKey": "a",
+                    "dataType": "bub.",
+                    "file_format": "unknown"
+                },
+                "obsStartTime": "2018-10-01T19:23:08",
+                "obsEndTime": "2018-10-01T19:27:25"
+            }
+        }
+    },
+    "searchJobs": {
+        "lambda": {
+            "resource": "hi",
+            "body": {
+                "query": {
+                    "jobStatus": ["QUEUED","FAILED"],
+                    "algorithm": {
+                        "name": "dss ad-hoc",
+                        "version": "1.0"
+                    },
+                    "enqueueTime": {
+                        "gte": "20180926T223727.900Z",
+                        "lte": "20180926T223727.900Z"
+                    },
+                    "startTime": {
+                        "gte": "20180926T223727.900Z",
+                        "lte": "20180926T223727.900Z"
+                    },
+                    "completionTime": {
+                        "gte": "20180926T223727.900Z",
+                        "lte": "20180926T223727.900Z"
+                    }
+                },
+                "result": {
+            		"sort": [
+                        {"attr1": "asc"}, 
+                        {"attr2": "desc"}
+            		],
+            		"limit": {
+                        "from": 0,
+                        "size": 100
+                    }
+            	}
+            }
+        }
+    },
+    "cancelJob": {
+        "lambda": {
+            "pathParameters": {
+                "jobid": 305
+            }
+        }
+    },
+}

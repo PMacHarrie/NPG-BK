@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS SAM template for demo lambdas
+Globals:
+  Function:
+    VpcConfig:
+      SecurityGroupIds:
+        - sg-1e601b69
+      SubnetIds:
+        - subnet-49c98914
+        - subnet-faafe3d5
+        - subnet-d0054bef
+        - subnet-6f3d2924
+Resources:
+  mesoscaleStorms:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/mesoscaleStorms.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
+  jobVis:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_functions/jobVis.lambda_handler
+      Runtime: python3.6
+      Description: ''
+      MemorySize: 128
+      Timeout: 15
+      Role: 'arn:aws:iam::784330347242:role/service-role/MyRole'
+      CodeUri: .debug/
+      Environment:
+        Variables:
+          ES_HOST: 'https://vpc-nde-test-sncp4dqd63lf4rs2vdihlk763e.us-east-1.es.amazonaws.com'
+          ES_PORT: '443'
+          RD_HOST: 'nde-pgsql.cixifosqwtgg.us-east-1.rds.amazonaws.com'
+          RD_DBNM: 'nde_dev1'
+          RD_USER: 'nde_dev1'
+          RD_PSWD: 'nde'
