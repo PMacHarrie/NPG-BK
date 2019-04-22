@@ -1,0 +1,52 @@
+<!-- ============================================================================== -->
+<!-- name: matchupLSR_perf.py -->
+<!-- 20181203 pgm initial     -->
+<!-- ============================================================================== -->
+
+<Algorithm
+  algorithmName="matchLSR"
+  algorithmVersion="0.1"
+  algorithmCommandPrefix="python"
+  algorithmExecutableName="matchLSR_perf.py"
+  algorithmExecutableLocation="MATCH_UP"
+  algorithmNotifyOpSeconds="60"
+  algorithmType="Tailoring"
+  algorithmPcf_Filename="matchLSR_perf.py.PCF"
+  algorithmPsf_Filename="matchLSR_perf.py.PSF"
+  algorithmLogFilename="matchLSR_perf.py.log"
+  algorithmLogMessageContext="."
+  algorithmLogMessageWarn="WARNING"
+  algorithmLogMessageError="ERROR"
+>
+
+  <AlgorithmParameters>
+
+    <AlgoParameter
+      algoParameterName="wfo"
+      algoParameterDataType="string" />
+    <AlgoParameter
+      algoParameterName="lsrStartTime"
+      algoParameterDataType="string" />
+    <AlgoParameter
+      algoParameterName="lsrEndTime"
+      algoParameterDataType="string" />
+    <AlgoParameter
+      algoParameterName="mesoProductLevel"
+      algoParameterDataType="string" />
+    <AlgoParameter
+      algoParameterName="mesoProductBand"
+      algoParameterDataType="string" />
+  </AlgorithmParameters>
+
+  <AlgorithmInputs>
+	<!-- TODO: Change the schema and remove this bogus product. -->
+	<AlgoInputProd productShortName="VIIRS-MOD-GEO-TC" />
+  </AlgorithmInputs>
+  
+  <AlgorithmOutputs>
+	<!-- TODO: Change the schema and remove this bogus product. -->
+	<AlgoOutputProd productShortName="VIIRS-MOD-GEO-TC" />
+  </AlgorithmOutputs>
+
+</Algorithm>
+
