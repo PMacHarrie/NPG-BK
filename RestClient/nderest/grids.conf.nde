@@ -1,0 +1,60 @@
+# NDE Pre-defined GRID Configuration File
+# PROJ.4 Grids
+# proj4 grids may have None for sizes, origins, or pixel sizes to be considered 'dynamic'
+# pixel size or grid size must be specified
+#
+# grid_name, proj4, proj4_str, width, height, pixel_size_x, pixel_size_y, ll_lon, ll_lat, ur_lon, ur_lat
+#
+
+NORTH_POLAR_STEREOGRAPHIC_375M, proj, +proj=stere +a=6378137 +b=6356752 +datum=WGS84 +ellps=WGS84 +x_0=0 +y_0=0 +units=meters +lon_0=180 +lat_0=90 +lat_ts=60.0 +no_defs, None, None, 375, -375, None, None, None, None
+
+NORTH_POLAR_STEREOGRAPHIC_750M, proj, +proj=stere +a=6378137 +b=6356752 +datum=WGS84 +ellps=WGS84 +x_0=0 +y_0=0 +units=meters +lon_0=180 +lat_0=90 +lat_ts=60.0 +no_defs, None, None, 750, -750, None, None, None, None
+
+SOUTH_POLAR_STEREOGRAPHIC_375M, proj, +proj=stere +a=6378137 +b=6356752 +datum=WGS84 +ellps=WGS84 +x_0=0 +y_0=0 +units=meters +lon_0=180 +lat_0=-90 +lat_ts=-60.0 +no_defs, None, None, 375, -375, None, None, None, None
+
+SOUTH_POLAR_STEREOGRAPHIC_750M, proj, +proj=stere +a=6378137 +b=6356752 +datum=WGS84 +ellps=WGS84 +x_0=0 +y_0=0 +units=meters +lon_0=180 +lat_0=-90 +lat_ts=-60.0 +no_defs, None, None, 750, -750, None, None, None, None
+
+PLATE_CAREE_375M, proj, +proj=eqc +a=6378137 +b=6356752 +datum=WGS84 +ellps=WGS84 +x_0=0 +y_0=0 +units=meters +lon_0=180 +lat_0=-90 +lat_ts=-60.0 +no_defs, None, None, 375, -375, None, None, None, None
+
+
+AWIPS_211e, proj4, +proj=lcc +a=6371200.0.0 +b=6371200.0.0 +lat_0=25 +lat_1=25 +lat_2=25 +lon_0=-95 +units=m +no_defs, 5120, 5120, 1015.9, -1015.9, -113.133, 16.368, -49.384, 57.289
+
+AWIPS_211e_hi, proj4, +proj=lcc +a=6371200.0 +b=6371200.0 +lat_0=25 +lat_1=25 +lat_2=25 +lon_0=-95 +units=m +no_defs, 10000, 10000, 500, -500, -113.133, 16.368, -49.384, 57.289
+
+AWIPS_211w, proj4, +proj=lcc +a=6371200.0 +b=6371200.0 +lat_0=25 +lat_1=25 +lat_2=25 +lon_0=-95 +units=m +no_defs, 4400, 5120, 1015.9, -1015.9, -133.458, 12.189, -91.443, 61.257
+
+AWIPS_203, proj4, +proj=stere +a=6371200.0 +b=6371200.0 +lat_0=90 +lat_1=60 +lat_ts=60.0 +lon_0=-150 +units=m +no_defs, 8384, 7239, 1000.0, -1000.0, 174.162, 19.132, -53.663, 57.617
+
+AWIPS_204, proj4, +proj=merc +a=6371200.0 +b=6371200.0 +lat_ts=20 +lat_1=20 +lon_0=180 +units=m +no_defs, 14168, 10318, 1038.964, -1038.964, 110.0, -25.001, -109.128, 60.644
+
+DWD_GERMANY, proj4, +proj=stere +a=6370000 +b=6370000 +lat_0=90 +lat_ts=60 +lon_0=10 +units=m +no_defs, 3000, 4000, 400, -400, 1.661, 42.665, 17.127, 56.457
+
+AUSTRALIA, proj4, +proj=merc +a=6378137 +b=6378137 +lat_0=-30 +lon_0=140 +units=m +no_defs, 7700, 7700, 1015.9, -1015.9, 105.0, -54.498, 175.270, 5.0
+
+AUSTRALIA2, proj4, +proj=merc +a=6378137 +b=6378137 +lat_0=-30 +lon_0=140 +units=m +no_defs, 1100, 1100, 7111.3, -7111.3, 105.0, -54.498, 175.270, 5.0
+
+LCC_FIT, proj4, +proj=lcc +a=6371200.0 +b=6371200.0 +lat_0=25 +lat_1=25 +lat_2=25 +lon_0=-95 +units=m +no_defs, None, None, 1000, -1000, None, None, , 
+
+LCC_FIT_HR, proj4, +proj=lcc +a=6371200.0 +b=6371200.0 +lat_0=25 +lat_1=25 +lat_2=25 +lon_0=-95 +units=m +no_defs, None, None, 400, -400, None, None, , 
+
+#wgs84_fit, proj4, +proj=latlong +datum=WGS84 +ellps=WGS84 +no_defs, None, None, 0.0057, -0.0057, None, None, , 
+
+#wgs84_fit_250, proj4, +proj=latlong +datum=WGS84 +ellps=WGS84 +no_defs, None, None, 0.00225, -0.00225, None, None, , 
+
+PLATECAREE_FIT, proj4, +proj=eqc +a=6371200.0 +b=6371200.0 +lat_0=0 +lat_ts=0 +lon_0=-100 +units=m +no_defs, None, None, 1000, -1000, None, None, , 
+
+POLAR_CANADA, proj4, +proj=stere +datum=WGS84 +ellps=WGS84 +lat_0=90 +lat_ts=45.0 +lon_0=-150 +units=m, None, None, 1000, -1000, None, None, , 
+
+POLAR_NORTH_PAC, proj4, +proj=stere +a=6370000 +b=6370000 +lat_0=90 +lat_ts=45.0 +lon_0=-170 +units=m, None, None, 400, -400, None, None, , 
+
+POLAR_SOUTH_PAC, proj4, +proj=stere +a=6370000 +b=6370000 +lat_0=-90 +lat_ts=-45.0 +lon_0=-170 +units=m, None, None, 400, -400, None, None, , 
+
+NIC_SIPAS_NORTH, proj4, +proj=stere +lat_0=90 +lat_ts=60 +lon_0=180 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs, None, None, 375, -375, None, None, None, None
+
+NIC_SIPAS_SOUTH, proj4, +proj=stere +lat_0=-90 +lat_ts=-60 +lon_0=180 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs, None, None, 375, -375, None, None, None, None
+
+MERC_FIT, proj4, +proj=merc +a=6371200.0.0 +b=6371200.0.0 +lat_ts=0 +lon_0=-90 +x_0=0 y_0=0 +units=m +no_defs, None, None, 1000, -1000, None, None, None, None
+
+MERC_FIT_HR, proj4, +proj=merc +a=6371200.0 +b=6371200.0 +lat_ts=0 +lon_0=-90 +x_0=0 y_0=0 +units=m +no_defs, None, None, 400, -400, None, None, None, None
+
+SPHERE_MERC, proj4, +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs, None, None, 5000, -5000, -179.999, -85.051, 179.999, 85.051
