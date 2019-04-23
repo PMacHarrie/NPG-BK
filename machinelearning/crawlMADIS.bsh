@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+export PGPASSWORD=Ndedw~1!
+while read p;
+do
+
+echo $p
+
+lftp -u anonymous,peter.macharrie@noaa.gov madis-data.ncep.noaa.gov << EOF
+cd $p
+lcd mesonetdata
+mget *gz
+bye
+EOF
+gunzip mesonetdata/*
+for f in ./mesonetdata/*;
+do
+	echo $f
+	python ingestMADIS.py $f
+	sudo aws s3 cp temp.csv s3://ndepg/temp.csv
+	psql --host=ndedw.cnvddtnhoxko.us-east-1.redshift.amazonaws.com --port=5439 --username=ndedw -f copyMADIS.sql
+	rm $f
+done
+echo 'Done ' $p
+done <list.txt

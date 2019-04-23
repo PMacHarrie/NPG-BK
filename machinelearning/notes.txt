@@ -1,0 +1,16 @@
+1) surfaceObservation.sql - create table in Redshift and postgresql.
+2) lftp from madis web site.
+3) ingestMADIS.py - for an nc4 extract variables and output csv file
+4) crawl - 
+	gets a directory worth of files from madis ftp, gunzips, 
+	coverts to csv
+	loads to database
+	remove
+5) \copy sql file
+
+
+B. Find past goes-r files
+
+C. http: nws-chat to pull LSR reports and load to postgres.
+
+
