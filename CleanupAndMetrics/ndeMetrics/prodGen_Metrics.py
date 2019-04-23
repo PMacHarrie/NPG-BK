@@ -57,6 +57,9 @@ where j.prodPartialJobId = s.prodPartialJobId
  and r.algorithmId = a.algorithmId
  and prJobCompletionTime >= %s and prJobCompletionTime < %s
  and prJobStatus = 'COMPLETE'
+ and prJobCPU_Util is not null
+ and prJobIO_Util is not null
+ and prJobMem_Util is not null
 order by prJobId
 ) t1
 order by
