@@ -86,51 +86,51 @@ def pollQueueAndProcess(conn):
 #        if goesProductName[:len('ABI-L1b-Rad')] == 'ABI-L1b-Rad':
 
         insLambdaInput = {
-                "filename": filename,
-                "filestoragereference": {
-                    "bucket": goesBucket,
-                    "key" : goesKey
-                }
+            "filename": filename,
+            "filestoragereference": {
+                "bucket": goesBucket,
+                "key" : goesKey
+            }
         }
 
         logger.info("sending file PUT")
         response = requests.put(ndeRestUrl, data = json.dumps(insLambdaInput))
 
         if str(response.status_code) == '200':
-                logger.info("PUT response: code: 200 %s" % response.text)
-                sqs.delete_message(
-                    QueueUrl = insQueueUrl,
-                    ReceiptHandle = receipt_handle
-                )
-                logger.info("deleted sqs message")
-            
-                cur = conn.cursor()
-                cur.execute("UPDATE if_objectevent SET if_filemessagecreatetime = %s WHERE if_filename = %s",
+            logger.info("PUT response: code: 200 %s" % response.text)
+            sqs.delete_message(
+                QueueUrl = insQueueUrl,
+                ReceiptHandle = receipt_handle
+            )
+            logger.info("deleted sqs message")
+        
+            cur = conn.cursor()
+            cur.execute("UPDATE if_objectevent SET if_filemessagecreatetime = %s WHERE if_filename = %s",
+                (sentTs, filename))
+            if cur.rowcount == 0:
+                logger.info("No existing record in if_objectevent, doing INSERT")
+                cur.execute("INSERT INTO if_objectevent (if_filemessagecreatetime, if_filename) VALUES (%s, %s)",
                     (sentTs, filename))
-                if cur.rowcount == 0:
-                    logger.info("No existing record in if_objectevent, doing INSERT")
-                    cur.execute("INSERT INTO if_objectevent (if_filemessagecreatetime, if_filename) VALUES (%s, %s)",
-                        (sentTs, filename))
-                conn.commit()
-                cur.close()
-                logger.info("finshed if_objectevent if_filemessagecreatetime update/insert")
+            conn.commit()
+            cur.close()
+            logger.info("finshed if_objectevent if_filemessagecreatetime update/insert")
             
         elif str(response.status_code) in ['400', '404', '407']:
-                logger.info("PUT response: code: %s %s" % (response.status_code, response.text) )
-                sqs.delete_message(
-                    QueueUrl = insQueueUrl,
-                    ReceiptHandle = receipt_handle
-                )
-                logger.info("deleted sqs message:") #, receipt_handle)
+            logger.info("PUT response: code: %s %s" % (response.status_code, response.text) )
+            sqs.delete_message(
+                QueueUrl = insQueueUrl,
+                ReceiptHandle = receipt_handle
+            )
+            logger.info("deleted sqs message:") #, receipt_handle)
         elif str(response.status_code) == '500':
-                logger.info("PUT response: code: 500 %s" % response.text)
-                logger.info("NOT deleting sqs message")
+            logger.info("PUT response: code: 500 %s" % response.text)
+            logger.info("NOT deleting sqs message")
         else:
-                logger.info("Lambda error? Unexpected status code: %s %s" % (response.status_code, response.text) )
+            logger.info("Lambda error? Unexpected status code: %s %s" % (response.status_code, response.text) )
 
         dt3 = datetime.now()
         logger.info(">>>>> {0} ** dur (since SQS rcv): {1}s ** dur (since msg to SQS): {2}s <<<<<".format(
-                filename, (dt3-dt1).total_seconds(), (dt3-sentTs).total_seconds()) )
+            filename, (dt3-dt1).total_seconds(), (dt3-sentTs).total_seconds()) )
 #        else:
 #            logger.info("Will not ingest %s because it is a %s product." % (filename, goesProductName))
 #            sqs.delete_message(
