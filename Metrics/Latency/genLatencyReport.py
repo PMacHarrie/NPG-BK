@@ -66,7 +66,7 @@ def queryAndCsv(datesForQuery, dateRangeStr, timeCol, dw_conn):
     
     print("Processing timeColumn: " + timeCol)
     outFile = open('latencySummary_%s_%s.csv' % (dateRangeStr, timeCol), 'w')
-    outFile.write("platformname,product,Date,cnt,min,max,avg,stddev,le_6min,r6_7min,r7_8min,r8_9min," +
+    outFile.write("platform,product_sn,type-subt,date,cnt,min,max,avg,stddev,le_6min,r6_7min,r7_8min,r8_9min," +
         "r9_10min,r10_11min,r11_12min,r12_13min,r13_14min,r14_15min,r15_30min,r30_90min,r90_116min," +
         "r116_130min,r130_137min,r137_147min,gte_147min\n")
         
@@ -80,7 +80,8 @@ def queryAndCsv(datesForQuery, dateRangeStr, timeCol, dw_conn):
         dw_cur.execute("""
             select
               platformname,
-              product,
+              productShortName,
+              typesubt,
               to_char(date_of_proc, 'YYYY-MM-DD') latDate,
               count(*) cnt,
               min (productlatsec) min,
@@ -107,7 +108,8 @@ def queryAndCsv(datesForQuery, dateRangeStr, timeCol, dw_conn):
             from (
               select
                 platformname,
-                productShortName || '-' || productType || '-' || productSubType as product,
+                productShortName,
+                productType || '-' || productSubType as typesubt,
                 fileStartTime date_of_proc,
                 extract(epoch from (fileInsertTime - %s)) as productlatsec
               from ingest_log
@@ -117,7 +119,8 @@ def queryAndCsv(datesForQuery, dateRangeStr, timeCol, dw_conn):
             ) t1 
             group by
               platformname,
-              product,
+              productShortName,
+              typesubt,
               to_char(date_of_proc, 'YYYY-MM-DD')
         """ % (timeCol, fromDt, toDt) )
     
@@ -135,5 +138,4 @@ def queryAndCsv(datesForQuery, dateRangeStr, timeCol, dw_conn):
 if __name__ == "__main__":
     
     myMain()
-
 

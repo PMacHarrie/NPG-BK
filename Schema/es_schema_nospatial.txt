@@ -1,0 +1,92 @@
+{
+    "settings": {
+        "index.mapping.total_fields.limit": 30000,
+        "number_of_shards" : 20,
+        "number_of_replicas" : 1,
+        "analysis": {
+            "analyzer": {
+                "pud_analyzer": {
+                    "type": "pattern",
+                    "pattern": "\\.|_|-",
+                    "lowercase": true
+                }
+            }
+        }
+    },
+    "mappings": {
+        "_doc": {
+            "properties": {
+                "edmCore": {
+                    "properties": {
+                        "fileId": {
+                            "type": "long",
+                            "index": true
+                        },
+                        "fileName": {
+                            "type": "text",
+                            "index": true,
+                            "analyzer": "pud_analyzer"
+                        },
+                        "productShortName": {
+                            "type": "text",
+                            "index": true,
+                            "analyzer": "pud_analyzer",
+                            "fields": {
+                                "kw": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "fileInsertTime": {
+                            "type": "date",
+                            "index": true,
+                            "format": "date_time"
+                        },
+                        "fileStartTime": {
+                            "type": "date",
+                            "index": true,
+                            "format": "date_time"
+                        },
+                        "fileEndTime": {
+                            "type": "date",
+                            "index": true,
+                            "format": "date_time"
+                        },
+                        "platformNames": {
+                            "type": "text",
+                            "index": true,
+                            "fields": {
+                                "kw": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "fileSpatialArea": {
+                            "type": "object",
+                            "enabled" : false
+                        },
+                        "fileBeginOrbitNum": {
+                            "type": "long",
+                            "index": true
+                        },
+                        "fileEndOrbitNum": {
+                            "type": "long",
+                            "index": true
+                        },
+                        "fileDayNightFlag": {
+                            "type": "text",
+                            "index": true
+                        },
+                        "fileAscDescIndicator": {
+                            "type": "long",
+                            "index": true
+                        }
+                    }
+                },
+                "objectMetadata": {
+                    "enabled": false
+                }
+            }
+        }
+    }
+}
