@@ -1,2 +1,0 @@
-copy surfaceobservation (stationId, stationName, stationType, latitude, longitude, elevation, observationTime, temperature, dewpoint, relhumidity, stationpressure, sealevelpressure, altimeter, winddir, windspeed, windgust, rawprecip, precipaccum, waterlevel, skycvr, skycovlayerbase, restricteddatalevel, precip1min)
-from 's3://ndepg/temp.csv' credentials 'aws_access_key_id=AKIAIYFRXG3MWD5T6CKA;aws_secret_access_key=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' FORMAT CSV NULL 'NULL' IGNOREHEADER 1 ;
